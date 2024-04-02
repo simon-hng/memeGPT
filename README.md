@@ -1,4 +1,4 @@
-# Intro Course Project App of <yourname> for the iPraktikum
+# Intro Course Project App of Simon Huang for the iPraktikum
 
 To pass the intro course, you need to create your own unique iOS app (based on SwiftUI).
 
@@ -17,7 +17,7 @@ Your tutor will review your changes and either request changes or approves the M
 
 If your MR got approved, you also need to merge it!
 
-### Deadline: **17.10.2023 23:59**
+### Deadline: **09.04.2024 23:59**
 
 Until the deadline all of your PRs **need to be merged** and your final app **needs to fulfill** all of the requested NFRs!
 
