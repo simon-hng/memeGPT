@@ -25,9 +25,13 @@ Until the deadline all of your PRs **need to be merged** and your final app **ne
 
 ## Problem Statement (max. 500 words)
 
-In the ipraktikum pre-course, participants seek engaging ways to enhance their learning experience and foster camaraderie within their cohort through humor and creativity. However, the process of generating entertaining content, such as memes, proves time-consuming and requires specialized skills in image editing software. Additionally, the absence of a centralized platform to save and retrieve created memes complicates the process, leading to frustration and disengagement among participants.
+In the ipraktikum pre-course, participants seek engaging ways to enhance their learning experience and foster camaraderie within their cohort through humor and creativity. 
+However, the process of generating entertaining content, such as memes, proves time-consuming and requires specialized skills in image editing software.
+Additionally, the absence of a centralized platform to save and retrieve created memes complicates the process, leading to frustration and disengagement among participants.
 
-To adress these challenges, I, as a participant of the iPraktikum, want to have an iOS application that allows me to easily create memes and share them via Slack, providing users with a seamless and enjoyable experience during the pre-course. The app streamlines meme creation, facilitate storage and retrieval of generated content. As a user I want to be able to create memes from uploaded images, view a gallery of previously generated memes, save memes to the phone gallery, and optional share it on slack with a single button.
+To adress these challenges, I, as a participant of the iPraktikum, want to have an iOS application that allows me to easily create memes and share them via Slack, providing users with a seamless and enjoyable experience during the pre-course.
+The app streamlines meme creation, facilitate storage and retrieval of generated content. 
+As a user I want to be able to create memes from templates, view a gallery of previously generated memes, save memes to the phone gallery, and optionally share it on slack with a single button.
 
 Optionally streamlining meme generation using generative AI would be a very helpful feature so I can use less of my mental capacity to create memes.
 
@@ -39,15 +43,14 @@ As a student, I need an application to help me create and share memes.
 
 I want to be able to:
 
-- 🎨 ...create Memes by being able to upload and edit images to generate memes out of them.
+- 😄 ...browse meme templates and select them
+- 🎨 ...create Memes from templates
 - 🖼️ ...view previously generated memes in a Gallery.
 - 💾 ...save memes to my phone image gallery.
 
 Optionally it would be good for me to be able to:
-- 🤖 ...generate images using a ML model for future use in memes, based on a prompt that I enter.
+- 🤖 ...generate texts using a ML model for future use in memes, based on a prompt that I enter.
 - 📤 ...post memes to Slack as images.
-
-We will be working with this app throughout the intro course!
 
 ### Non-Functional requirements
 - Constraint: App should have 5 +- 2 custom swift UI views
@@ -59,9 +62,12 @@ We will be working with this app throughout the intro course!
 
 ## Analysis
 
+<!-- https://apollon.ase.in.tum.de/WI1bEztvV2iahy5HMKUI?view=EDIT -->
 ![AOM](assets/aom.png)
 
 ## System Design
+
+![subsystem design](assets/subsystem.png)
 
 ## Product Backlog
 
