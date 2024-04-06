@@ -8,9 +8,20 @@ struct MemeTemplateBrowserView: View {
             switch viewModel.state {
                 case .success(let templates):
                     List(templates) { template in
-                        MemeTemplateCardView(memeTemplate: template)
-                            .padding(.bottom, 16)
-                            .listRowSeparator(.hidden)
+                        ZStack {
+                            MemeTemplateCardView(memeTemplate: template)
+                                .padding(.bottom, 16)
+                                .listRowSeparator(.hidden)
+                            NavigationLink {
+                                MemeGeneratorView(template: template)
+                                    .navigationTitle(template.name)
+                                    .navigationBarTitleDisplayMode(.inline)
+                            } label: {
+                                EmptyView()
+                            }
+                            .opacity(0)
+                        }
+                        .listRowSeparator(.hidden)
                     }
                     .listStyle(.plain)
 
@@ -34,6 +45,9 @@ struct MemeTemplateBrowserView: View {
 
 struct MemeTemplateBrowserView_Previews: PreviewProvider {
     static var previews: some View {
-        MemeTemplateBrowserView()
+        NavigationStack {
+            MemeTemplateBrowserView()
+                .navigationTitle("Browse Templates")
+        }
     }
 }
