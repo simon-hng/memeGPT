@@ -4,16 +4,59 @@ import Kingfisher
 struct MemeGeneratorView: View {
     @State private var viewModel: MemeGeneratorViewModel
 
-    init (template: MemeTemplate) {
-        self._viewModel = State(wrappedValue: MemeGeneratorViewModel(template: template))
+    init (template: MemeTemplate, gallery: Gallery) {
+        self._viewModel = State(wrappedValue:
+                                MemeGeneratorViewModel(template: template,
+                                                       gallery: gallery)
+        )
+    }
+
+    private struct MemeGeneratorImageView: View {
+        let viewModel: MemeGeneratorViewModel
+
+        var body: some View {
+            switch viewModel.state {
+                case .preview:
+                    KFImage( viewModel.previewUrl)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+
+                case .saving:
+                    ZStack {
+                        ProgressView("Loading...")
+                        KFImage( viewModel.imageUrl)
+                            .onSuccess { result in
+                                viewModel.saveImage(image: result.image)
+                            }
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+
+                case .saved:
+                    VStack {
+                        KFImage( viewModel.imageUrl)
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        HStack {
+                            Image(systemName: "checkmark")
+                            Text("Saved")
+                        }
+                        .foregroundColor(.green)
+                        .bold()
+                    }
+
+                case .error(let error):
+                    Text(error.localizedDescription)
+                }
+        }
     }
 
     var body: some View {
         VStack {
-            KFImage(viewModel.previewUrl)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(10)
+            MemeGeneratorImageView(viewModel: viewModel)
             Spacer()
             VStack {
                 ForEach($viewModel.lines) { line in
@@ -34,14 +77,8 @@ struct MemeGeneratorView: View {
 }
 
 #Preview {
-    let exampleTemplate = MemeTemplate(
-        id: "aag",
-        name: "Ancient Aliens Guy",
-        lines: 2,
-        overlays: 0,
-        styles: [],
-        blank: "https://api.memegen.link/images/aag.png",
-        example: MemeExample(text: ["aliens"],
-                             url: "https://api.memegen.link/images/aag/_/aliens.png"))
-    return MemeGeneratorView(template: exampleTemplate)
+    return MemeGeneratorView(
+        template: MemeTemplate.preview,
+        gallery: Gallery.preview
+    )
 }

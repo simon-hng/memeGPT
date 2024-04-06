@@ -14,11 +14,14 @@ struct MemeTemplateCardView: View {
             KFImage(URL(string: memeTemplate.example.url))
                 .resizable()
                 .scaledToFit()
-                .cornerRadius(10)
+                .cornerRadius(16)
         }
         .padding(16)
         .background()
-        .cornerRadius(16)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(RoundedRectangle(cornerRadius: 16)
+            .stroke(.secondary)
+        )
         .shadow(radius: 2)
     }
 }

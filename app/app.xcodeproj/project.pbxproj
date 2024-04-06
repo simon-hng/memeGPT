@@ -20,6 +20,12 @@
 		89EC5FCB2BBE8AA600D61E6A /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 89EC5FCA2BBE8AA600D61E6A /* AlamofireDynamic */; };
 		89EC5FCF2BBED07B00D61E6A /* MemeGeneratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FCE2BBED07B00D61E6A /* MemeGeneratorView.swift */; };
 		89EC5FD12BBED24400D61E6A /* MemeGeneratorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FD02BBED24400D61E6A /* MemeGeneratorViewModel.swift */; };
+		89EC5FD62BC027F000D61E6A /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FD52BC027F000D61E6A /* Meme.swift */; };
+		89EC5FDB2BC044E900D61E6A /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FDA2BC044E900D61E6A /* Gallery.swift */; };
+		89EC5FDF2BC054D900D61E6A /* MemeGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FDE2BC054D900D61E6A /* MemeGalleryView.swift */; };
+		89EC5FE12BC0550500D61E6A /* MemeGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FE02BC0550500D61E6A /* MemeGalleryViewModel.swift */; };
+		89FEFCC12BC13F410054D82E /* MemeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FEFCC02BC13F410054D82E /* MemeCardView.swift */; };
+		89FEFCC52BC150E00054D82E /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 89EC5FD82BC03C0C00D61E6A /* AlamofireImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +40,11 @@
 		89EC5FC12BBE86C600D61E6A /* MemeTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTemplate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		89EC5FCE2BBED07B00D61E6A /* MemeGeneratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorView.swift; sourceTree = "<group>"; };
 		89EC5FD02BBED24400D61E6A /* MemeGeneratorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorViewModel.swift; sourceTree = "<group>"; };
+		89EC5FD52BC027F000D61E6A /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		89EC5FDA2BC044E900D61E6A /* Gallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		89EC5FDE2BC054D900D61E6A /* MemeGalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGalleryView.swift; sourceTree = "<group>"; };
+		89EC5FE02BC0550500D61E6A /* MemeGalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGalleryViewModel.swift; sourceTree = "<group>"; };
+		89FEFCC02BC13F410054D82E /* MemeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FEFCC52BC150E00054D82E /* AlamofireImage in Frameworks */,
 				89EC5FC62BBE88DD00D61E6A /* Kingfisher in Frameworks */,
 				89EC5FCB2BBE8AA600D61E6A /* AlamofireDynamic in Frameworks */,
 				89EC5FC92BBE8AA600D61E6A /* Alamofire in Frameworks */,
@@ -69,9 +81,10 @@
 		89EC5FA52BBD999D00D61E6A /* app */ = {
 			isa = PBXGroup;
 			children = (
+				89EC5FDD2BC054CA00D61E6A /* MemeGallery */,
+				89EC5FBB2BBDA66600D61E6A /* MemeTemplateBrowser */,
 				89EC5FCD2BBED05000D61E6A /* MemeGenerator */,
 				89EC5FC32BBE86CB00D61E6A /* Model */,
-				89EC5FB82BBDA63900D61E6A /* MemeTemplateSubsystem */,
 				89EC5FA62BBD999D00D61E6A /* MemeGeneratorApp.swift */,
 				89EC5FA82BBD999D00D61E6A /* ContentView.swift */,
 				89EC5FAA2BBD999E00D61E6A /* Assets.xcassets */,
@@ -88,14 +101,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		89EC5FB82BBDA63900D61E6A /* MemeTemplateSubsystem */ = {
-			isa = PBXGroup;
-			children = (
-				89EC5FBB2BBDA66600D61E6A /* MemeTemplateBrowser */,
-			);
-			path = MemeTemplateSubsystem;
-			sourceTree = "<group>";
-		};
 		89EC5FBB2BBDA66600D61E6A /* MemeTemplateBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				89EC5FC12BBE86C600D61E6A /* MemeTemplate.swift */,
+				89EC5FD52BC027F000D61E6A /* Meme.swift */,
+				89EC5FDA2BC044E900D61E6A /* Gallery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +128,16 @@
 				89EC5FD02BBED24400D61E6A /* MemeGeneratorViewModel.swift */,
 			);
 			path = MemeGenerator;
+			sourceTree = "<group>";
+		};
+		89EC5FDD2BC054CA00D61E6A /* MemeGallery */ = {
+			isa = PBXGroup;
+			children = (
+				89EC5FDE2BC054D900D61E6A /* MemeGalleryView.swift */,
+				89EC5FE02BC0550500D61E6A /* MemeGalleryViewModel.swift */,
+				89FEFCC02BC13F410054D82E /* MemeCardView.swift */,
+			);
+			path = MemeGallery;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +161,7 @@
 				89EC5FC52BBE88DD00D61E6A /* Kingfisher */,
 				89EC5FC82BBE8AA600D61E6A /* Alamofire */,
 				89EC5FCA2BBE8AA600D61E6A /* AlamofireDynamic */,
+				89EC5FD82BC03C0C00D61E6A /* AlamofireImage */,
 			);
 			productName = app;
 			productReference = 89EC5FA32BBD999D00D61E6A /* app.app */;
@@ -176,6 +194,7 @@
 			packageReferences = (
 				89EC5FC42BBE88DD00D61E6A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				89EC5FC72BBE8AA600D61E6A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				89EC5FD72BC03C0C00D61E6A /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = 89EC5FA42BBD999D00D61E6A /* Products */;
 			projectDirPath = "";
@@ -223,12 +242,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89FEFCC12BC13F410054D82E /* MemeCardView.swift in Sources */,
 				89EC5FBE2BBDA7D300D61E6A /* MemeTemplateBrowserViewModel.swift in Sources */,
+				89EC5FE12BC0550500D61E6A /* MemeGalleryViewModel.swift in Sources */,
 				89EC5FA92BBD999D00D61E6A /* ContentView.swift in Sources */,
 				89EC5FC02BBDAB0800D61E6A /* MemeTemplateCardView.swift in Sources */,
 				89EC5FC22BBE86C600D61E6A /* MemeTemplate.swift in Sources */,
 				89EC5FBA2BBDA65700D61E6A /* MemeTemplateBrowserView.swift in Sources */,
+				89EC5FDF2BC054D900D61E6A /* MemeGalleryView.swift in Sources */,
 				89EC5FA72BBD999D00D61E6A /* MemeGeneratorApp.swift in Sources */,
+				89EC5FDB2BC044E900D61E6A /* Gallery.swift in Sources */,
+				89EC5FD62BC027F000D61E6A /* Meme.swift in Sources */,
 				89EC5FD12BBED24400D61E6A /* MemeGeneratorViewModel.swift in Sources */,
 				89EC5FCF2BBED07B00D61E6A /* MemeGeneratorView.swift in Sources */,
 			);
@@ -456,6 +480,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		89EC5FD72BC03C0C00D61E6A /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -473,6 +505,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89EC5FC72BBE8AA600D61E6A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
+		};
+		89EC5FD82BC03C0C00D61E6A /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89EC5FD72BC03C0C00D61E6A /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
