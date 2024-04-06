@@ -17,7 +17,7 @@ struct MemeTemplateCardView: View {
                 .cornerRadius(10)
         }
         .padding(16)
-        .background(Color.white)
+        .background()
         .cornerRadius(16)
         .shadow(radius: 2)
     }

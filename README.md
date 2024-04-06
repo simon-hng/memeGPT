@@ -73,7 +73,6 @@ Optionally it would be good for me to be able to:
 
 | ID     | Name                          | Priority |
 |--------|-------------------------------|----------|
-| SIM-56 | Add meme generator            | Critical |
 | SIM-57 | Add gallery view              | Critical |
 | SIM-58 | Add saving to phone for memes | Major    |
 | SIM-59 | Add image generation using ai | Minor    |

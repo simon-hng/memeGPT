@@ -1,8 +1,11 @@
 import Foundation
 import Alamofire
+import OSLog
 
 @Observable
 class MemeTemplateBrowserViewModel {
+    let logger = Logger()
+   
     enum State {
         case initial
         case loading
@@ -29,5 +32,6 @@ class MemeTemplateBrowserViewModel {
         }
 
         state = .success(templates)
+        logger.info("Received \(templates.count) templates")
     }
 }
