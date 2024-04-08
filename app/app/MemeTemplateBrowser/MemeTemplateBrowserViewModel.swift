@@ -4,8 +4,6 @@ import OSLog
 
 @Observable
 class MemeTemplateBrowserViewModel {
-    let logger = Logger()
-
     enum State {
         case initial
         case loading

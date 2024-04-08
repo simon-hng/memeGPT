@@ -58,6 +58,13 @@ struct MemeGeneratorView: View {
         VStack {
             MemeGeneratorImageView(viewModel: viewModel)
             Spacer()
+            Link(destination: viewModel.memeInformationUrl, label: {
+                HStack {
+                    Text("Meme information")
+                        .font(.custom("impact", size: 20))
+                }
+            })
+            .padding(.bottom, 32)
             VStack {
                 ForEach($viewModel.lines) { line in
                     TextField("Line \(line.index.wrappedValue + 1)",

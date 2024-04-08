@@ -3,8 +3,6 @@ import Alamofire
 import Kingfisher
 import OSLog
 
-let logger = Logger()
-
 func getPreviewUrl(_ parameters: [URLQueryItem]) -> URL {
     // swiftlint:disable:next force_unwrapping
     var components = URLComponents(string: "https://api.memegen.link/images/preview.jpg")!
@@ -60,7 +58,22 @@ class MemeGeneratorViewModel {
             fatalError("Invalid URL components")
         }
 
+        logger.info("Getting generated meme from \(url)")
         state = .preview
+        return url
+    }
+
+    var memeInformationUrl: URL {
+        // swiftlint:disable:next force_unwrapping
+        var components = URLComponents(string: "https://knowyourmeme.com/search")!
+        components.queryItems = [
+            URLQueryItem(name: "q", value: template.name)
+        ]
+
+        guard let url = components.url else {
+            fatalError("Invalid URL components")
+        }
+
         return url
     }
 

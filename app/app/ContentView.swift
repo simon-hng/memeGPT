@@ -1,5 +1,8 @@
 import SwiftUI
 import PhotosUI
+import OSLog
+
+let logger = Logger()
 
 struct ContentView: View {
     @State private var gallery = Gallery()
