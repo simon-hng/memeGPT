@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 
 @Observable
 class Gallery {
@@ -10,10 +11,12 @@ class Gallery {
 
     init(memes: [Meme]) {
         self.memes = memes
+        logger.info("Creating new instance of Gallery model")
     }
 
     func saveMeme(_ meme: Meme) {
         self.memes.append(meme)
+        logger.info("Saved meme to gallery")
     }
 }
 
