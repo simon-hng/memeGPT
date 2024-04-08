@@ -7,10 +7,16 @@ struct MemeCardView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Image(uiImage: meme.image)
-                .resizable()
-                .scaledToFit()
-                .cornerRadius(8)
+            ShareLink(
+                item: meme.image,
+                preview: SharePreview(
+                    meme.lines.joined(separator: " "),
+                    image: meme.image),
+                label: { meme.image
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(8)
+                })
         }
         .padding(16)
         .background()
