@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import Alamofire
 import Kingfisher
 import OSLog
@@ -96,7 +97,7 @@ class MemeGeneratorViewModel {
         let meme = Meme(
             templateId: template.id,
             lines: self.lines.map { $0.string },
-            image: image
+            image: Image(uiImage: image)
         )
 
         gallery.saveMeme(meme)
