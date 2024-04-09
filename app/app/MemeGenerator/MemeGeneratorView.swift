@@ -50,36 +50,73 @@ struct MemeGeneratorView: View {
 
                 case .error(let error):
                     Text(error.localizedDescription)
+                case .loading:
+                    ProgressView("Generating AI Meme...")
                 }
+        }
+    }
+
+    private struct UseCaseView: View {
+        @Bindable var viewModel: MemeGeneratorViewModel
+
+        var body: some View {
+            switch viewModel.selectedUseCase {
+            case .manual:
+                VStack {
+                    ForEach($viewModel.lines) { line in
+                        TextField("Line \(line.index.wrappedValue + 1)",
+                                  text: line.string)
+                        .textFieldStyle(.roundedBorder)
+                    }
+                }
+
+            case .gpt:
+                TextField("Meme about Stephan Krusche", text: $viewModel.suggestionPrompt)
+                    .textFieldStyle(.roundedBorder)
+                Button(action: {
+                    Task { await viewModel.generateSuggestion() }
+                }, label: {
+                    Label("Generate meme", systemImage: "brain")
+                        .frame(maxWidth: .infinity)
+                })
+                .buttonStyle(.bordered)
+
+            case .info:
+                VStack {
+                    Text("Meme information")
+                        .font(.custom("impact", size: 34))
+                    Link(destination: viewModel.memeInformationUrl, label: {
+                        Text("Find out more on knowyourmeme")
+                            .frame(maxWidth: .infinity)
+                    })
+                }
+                .padding()
+            }
         }
     }
 
     var body: some View {
         VStack {
             MemeGeneratorImageView(viewModel: viewModel)
-            Spacer()
-            Link(destination: viewModel.memeInformationUrl, label: {
-                HStack {
-                    Text("Meme information")
-                        .font(.custom("impact", size: 20))
-                }
-            })
-            .padding(.bottom, 32)
-            VStack {
-                ForEach($viewModel.lines) { line in
-                    TextField("Line \(line.index.wrappedValue + 1)",
-                              text: line.string)
-                        .textFieldStyle(.roundedBorder)
-                }
+                .padding(.bottom, 64)
+            Picker("useCase", selection: $viewModel.selectedUseCase) {
+                Text("Manual").tag(MemeGeneratorViewModel.UseCase.manual)
+                Text("GPT").tag(MemeGeneratorViewModel.UseCase.gpt)
+                Text("Information").tag(MemeGeneratorViewModel.UseCase.info)
             }
+            .pickerStyle(.segmented)
+            .padding(.bottom, 16)
+
+            UseCaseView(viewModel: viewModel)
+
             Button(action: viewModel.save, label: {
                 Label("Save", systemImage: "square.and.arrow.down")
                     .frame(maxWidth: .infinity)
             })
             .buttonStyle(.borderedProminent)
+            Spacer()
         }
         .padding()
-        .padding(.vertical, 48)
     }
 }
 

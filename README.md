@@ -73,7 +73,4 @@ Optionally it would be good for me to be able to:
 
 | ID     | Name                          | Priority |
 |--------|-------------------------------|----------|
-| SIM-58 | Add saving to phone for memes | Major    |
 | SIM-59 | Add image generation using ai | Minor    |
-| SIM-60 | Add text generation using ai  | Minor    |
-| SIM-61 | Add sharing of memes to slack | Minor    |

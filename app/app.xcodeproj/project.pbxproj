@@ -25,6 +25,7 @@
 		89EC5FDF2BC054D900D61E6A /* MemeGalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FDE2BC054D900D61E6A /* MemeGalleryView.swift */; };
 		89EC5FE12BC0550500D61E6A /* MemeGalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EC5FE02BC0550500D61E6A /* MemeGalleryViewModel.swift */; };
 		89FA53D02BC17D0F00415467 /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89FA53CF2BC17D0F00415467 /* impact.ttf */; };
+		89FA53D72BC4497800415467 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 89FA53D62BC4497800415467 /* OpenAI */; };
 		89FEFCC12BC13F410054D82E /* MemeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FEFCC02BC13F410054D82E /* MemeCardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 			files = (
 				89EC5FC62BBE88DD00D61E6A /* Kingfisher in Frameworks */,
 				89EC5FCB2BBE8AA600D61E6A /* AlamofireDynamic in Frameworks */,
+				89FA53D72BC4497800415467 /* OpenAI in Frameworks */,
 				89EC5FC92BBE8AA600D61E6A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +166,7 @@
 				89EC5FC52BBE88DD00D61E6A /* Kingfisher */,
 				89EC5FC82BBE8AA600D61E6A /* Alamofire */,
 				89EC5FCA2BBE8AA600D61E6A /* AlamofireDynamic */,
+				89FA53D62BC4497800415467 /* OpenAI */,
 			);
 			productName = app;
 			productReference = 89EC5FA32BBD999D00D61E6A /* app.app */;
@@ -196,6 +199,7 @@
 			packageReferences = (
 				89EC5FC42BBE88DD00D61E6A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				89EC5FC72BBE8AA600D61E6A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				89FA53D52BC4497800415467 /* XCRemoteSwiftPackageReference "OpenAI" */,
 			);
 			productRefGroup = 89EC5FA42BBD999D00D61E6A /* Products */;
 			projectDirPath = "";
@@ -486,6 +490,14 @@
 				minimumVersion = 5.9.1;
 			};
 		};
+		89FA53D52BC4497800415467 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -503,6 +515,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89EC5FC72BBE8AA600D61E6A /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = AlamofireDynamic;
+		};
+		89FA53D62BC4497800415467 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89FA53D52BC4497800415467 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

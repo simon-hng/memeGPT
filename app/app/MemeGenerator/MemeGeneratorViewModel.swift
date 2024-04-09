@@ -3,18 +3,7 @@ import SwiftUI
 import Alamofire
 import Kingfisher
 import OSLog
-
-func getPreviewUrl(_ parameters: [URLQueryItem]) -> URL {
-    // swiftlint:disable:next force_unwrapping
-    var components = URLComponents(string: "https://api.memegen.link/images/preview.jpg")!
-    components.queryItems = parameters
-
-    guard let url = components.url else {
-        fatalError("Invalid URL components")
-    }
-
-    return url
-}
+import OpenAI
 
 struct Line: Identifiable {
     let id = UUID()
@@ -22,20 +11,54 @@ struct Line: Identifiable {
     var string: String
 }
 
+enum GptError: Error {
+    case failedToParsePrompt
+    case notAJson
+    case notAnArray
+}
+
+extension GptError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .failedToParsePrompt:
+            return NSLocalizedString("Failed to parse your prompt. Please try out a different wording",
+                                     comment: "")
+        case .notAJson:
+            return NSLocalizedString("The response from OpenAI did not conform to a JSON format. Please try again",
+                                     comment: "")
+        case .notAnArray:
+            return NSLocalizedString("The response from OpenAI was not an array. Please try again", comment: "")
+        }
+    }
+}
+
 @Observable
 class MemeGeneratorViewModel {
+    // PLEASE DON'T STEAL MY API KEY
+    let openAI = OpenAI(apiToken: "OPENAI_API_TOKEN")
+
     var gallery: Gallery
     enum State {
         case preview
+        case loading
         case saving
         case saved
         case error(Error)
     }
 
     private(set) var state: State = .preview
+
+    enum UseCase {
+        case manual
+        case gpt
+        case info
+    }
+
+    var selectedUseCase: UseCase = .manual
+
     let template: MemeTemplate
-    var isSaved = false
     var lines: [Line]
+    var suggestionPrompt = ""
 
     var previewUrl: URL {
         var parameters = lines.map { value in
@@ -43,8 +66,16 @@ class MemeGeneratorViewModel {
         }
         parameters.append(URLQueryItem(name: "template", value: template.id))
 
+        // swiftlint:disable:next force_unwrapping
+        var components = URLComponents(string: "https://api.memegen.link/images/preview.jpg")!
+        components.queryItems = parameters
+
+        guard let url = components.url else {
+            fatalError("Invalid URL components")
+        }
+
         state = .preview
-        return getPreviewUrl(parameters)
+        return url
     }
 
     var imageUrl: URL {
@@ -101,5 +132,47 @@ class MemeGeneratorViewModel {
         )
 
         gallery.saveMeme(meme)
+    }
+
+    func generateSuggestion() async {
+        guard let chatQueryParam = ChatQuery.ChatCompletionMessageParam(
+            role: .user,
+            content: "Give me a suggestion for a meme that has \(template.lines) lines." +
+                "The meme should be about \(suggestionPrompt)" +
+                "Answer only in JSON as JSON array of the lines"
+        ) else {
+            state = .error(GptError.failedToParsePrompt)
+            return
+        }
+
+        let query = ChatQuery(messages: [chatQueryParam], model: .gpt3_5Turbo)
+
+        let suggestedLines: [String]
+        state = .loading
+        do {
+            let res = try await openAI.chats(query: query).choices[0].message.content?.string
+            logger.info("received ai message: \(res ?? "")")
+
+            guard let res, let jsonData = res.data(using: .utf8) else {
+                state = .error(GptError.notAJson)
+                return
+            }
+            guard let suggestion = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String] else {
+                state = .error(GptError.notAnArray)
+                return
+            }
+
+            suggestedLines = suggestion
+            state = .preview
+        } catch {
+            state = .error(error)
+            logger.error("\(String(describing: error))")
+            return
+        }
+
+        logger.info("Received AI suggestion")
+        for index in 0..<lines.count {
+            lines[index].string = suggestedLines[index]
+        }
     }
 }
