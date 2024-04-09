@@ -30,7 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		89EC5FA32BBD999D00D61E6A /* app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = app.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89EC5FA32BBD999D00D61E6A /* MemeGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89EC5FA62BBD999D00D61E6A /* MemeGeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeGeneratorApp.swift; sourceTree = "<group>"; };
 		89EC5FA82BBD999D00D61E6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		89EC5FAA2BBD999E00D61E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		89EC5FA42BBD999D00D61E6A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				89EC5FA32BBD999D00D61E6A /* app.app */,
+				89EC5FA32BBD999D00D61E6A /* MemeGPT.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		89EC5FA22BBD999D00D61E6A /* app */ = {
+		89EC5FA22BBD999D00D61E6A /* MemeGPT */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 89EC5FB12BBD999E00D61E6A /* Build configuration list for PBXNativeTarget "app" */;
+			buildConfigurationList = 89EC5FB12BBD999E00D61E6A /* Build configuration list for PBXNativeTarget "MemeGPT" */;
 			buildPhases = (
 				89EC5F9F2BBD999D00D61E6A /* Sources */,
 				89EC5FA02BBD999D00D61E6A /* Frameworks */,
@@ -161,7 +161,7 @@
 			);
 			dependencies = (
 			);
-			name = app;
+			name = MemeGPT;
 			packageProductDependencies = (
 				89EC5FC52BBE88DD00D61E6A /* Kingfisher */,
 				89EC5FC82BBE8AA600D61E6A /* Alamofire */,
@@ -169,7 +169,7 @@
 				89FA53D62BC4497800415467 /* OpenAI */,
 			);
 			productName = app;
-			productReference = 89EC5FA32BBD999D00D61E6A /* app.app */;
+			productReference = 89EC5FA32BBD999D00D61E6A /* MemeGPT.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -205,7 +205,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				89EC5FA22BBD999D00D61E6A /* app */,
+				89EC5FA22BBD999D00D61E6A /* MemeGPT */,
 			);
 		};
 /* End PBXProject section */
@@ -462,7 +462,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		89EC5FB12BBD999E00D61E6A /* Build configuration list for PBXNativeTarget "app" */ = {
+		89EC5FB12BBD999E00D61E6A /* Build configuration list for PBXNativeTarget "MemeGPT" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				89EC5FB22BBD999E00D61E6A /* Debug */,
