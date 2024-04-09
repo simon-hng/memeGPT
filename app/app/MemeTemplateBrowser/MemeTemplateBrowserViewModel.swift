@@ -4,6 +4,8 @@ import OSLog
 
 @Observable
 class MemeTemplateBrowserViewModel {
+    var searchString = ""
+
     enum State {
         case initial
         case loading
@@ -12,6 +14,17 @@ class MemeTemplateBrowserViewModel {
     }
 
     private(set) var state: State = .initial
+
+    var filteredTemplates: [MemeTemplate] {
+        if case .success(let templates) = state {
+            if searchString.isEmpty {
+                return templates
+            }
+            return templates.filter { $0.name.lowercased().contains(searchString.lowercased()) }
+        }
+
+        return []
+    }
 
     func fetchTemplates() async {
         // swiftlint:disable:next force_unwrapping

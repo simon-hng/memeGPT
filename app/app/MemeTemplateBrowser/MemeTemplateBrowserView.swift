@@ -2,13 +2,13 @@ import SwiftUI
 
 struct MemeTemplateBrowserView: View {
     @Environment(Gallery.self) private var gallery
-    var viewModel = MemeTemplateBrowserViewModel()
+    @Bindable var viewModel = MemeTemplateBrowserViewModel()
 
     var body: some View {
         VStack {
             switch viewModel.state {
-                case .success(let templates):
-                    List(templates) { template in
+                case .success:
+                    List(viewModel.filteredTemplates) { template in
                         ZStack {
                             MemeTemplateCardView(memeTemplate: template)
                                 .padding(.bottom, 16)
@@ -28,6 +28,8 @@ struct MemeTemplateBrowserView: View {
                         .listRowSeparator(.hidden)
                     }
                     .listStyle(.plain)
+                    .searchable(text: $viewModel.searchString,
+                                placement: .navigationBarDrawer(displayMode: .always))
 
                 case .loading:
                     ProgressView("Loading...")

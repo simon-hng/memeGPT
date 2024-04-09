@@ -36,7 +36,7 @@ struct MemeGeneratorView: View {
 
                 case .saved:
                     VStack {
-                        KFImage( viewModel.imageUrl)
+                        KFImage(viewModel.imageUrl)
                             .resizable()
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 10))
